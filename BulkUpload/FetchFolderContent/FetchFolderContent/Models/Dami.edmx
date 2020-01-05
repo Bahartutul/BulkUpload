@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DocMgtDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DmsBulkFileUpload">
+          <Key>
+            <PropertyRef Name="IdentityID" />
+          </Key>
+          <Property Name="IdentityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FolderID" Type="int" />
+          <Property Name="FileID" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="FileTag" Type="nvarchar(max)" />
+          <Property Name="UploadDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="FileMoveYN" Type="tinyint" />
+          <Property Name="FileActiveYN" Type="tinyint" />
+          <Property Name="FileMovementCompletedYN" Type="tinyint" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DocMgtDBModelStoreContainer">
+          <EntitySet Name="DmsBulkFileUpload" EntityType="Self.DmsBulkFileUpload" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DocMgtDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ImageContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DmsBulkFileUploads" EntityType="DocMgtDBModel.DmsBulkFileUpload" />
+        </EntityContainer>
+        <EntityType Name="DmsBulkFileUpload">
+          <Key>
+            <PropertyRef Name="IdentityID" />
+          </Key>
+          <Property Name="IdentityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FolderID" Type="Int32" />
+          <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UploadDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileMoveYN" Type="Byte" />
+          <Property Name="FileActiveYN" Type="Byte" />
+          <Property Name="FileMovementCompletedYN" Type="Byte" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DocMgtDBModelStoreContainer" CdmEntityContainer="ImageContext">
+          <EntitySetMapping Name="DmsBulkFileUploads">
+            <EntityTypeMapping TypeName="DocMgtDBModel.DmsBulkFileUpload">
+              <MappingFragment StoreEntitySet="DmsBulkFileUpload">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="FileMovementCompletedYN" ColumnName="FileMovementCompletedYN" />
+                <ScalarProperty Name="FileActiveYN" ColumnName="FileActiveYN" />
+                <ScalarProperty Name="FileMoveYN" ColumnName="FileMoveYN" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="FileTag" ColumnName="FileTag" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="FolderID" ColumnName="FolderID" />
+                <ScalarProperty Name="IdentityID" ColumnName="IdentityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

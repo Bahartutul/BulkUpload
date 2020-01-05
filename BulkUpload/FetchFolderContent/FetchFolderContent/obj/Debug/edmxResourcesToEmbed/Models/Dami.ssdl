@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DocMgtDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DmsBulkFileUpload">
+    <Key>
+      <PropertyRef Name="IdentityID" />
+    </Key>
+    <Property Name="IdentityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FolderID" Type="int" />
+    <Property Name="FileID" Type="nvarchar" MaxLength="50" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+    <Property Name="FilePath" Type="nvarchar(max)" />
+    <Property Name="FileTag" Type="nvarchar(max)" />
+    <Property Name="UploadDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="FileMoveYN" Type="tinyint" />
+    <Property Name="FileActiveYN" Type="tinyint" />
+    <Property Name="FileMovementCompletedYN" Type="tinyint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="DocMgtDBModelStoreContainer">
+    <EntitySet Name="DmsBulkFileUpload" EntityType="Self.DmsBulkFileUpload" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

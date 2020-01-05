@@ -1,0 +1,162 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Contents/CSS/bootstrap.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">*@
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.2.0/ng-tags-input.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .bootstrap-tagsinput {
+            width: 100%;
+            font-size: 15px;
+            border: 1px solid #cccccc;
+            /*color: white;*/
+        }
+
+        .accordion {
+            margin-bottom: -3px;
+        }
+
+        .accordion-group {
+            border: none;
+        }
+
+        .twitter-typeahead .tt-query,
+        .twitter-typeahead .tt-hint {
+            margin-bottom: 0;
+        }
+
+        .twitter-typeahead .tt-hint {
+            display: none;
+        }
+
+        .tt-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            width: 265px;
+            padding: 5px 0;
+            margin: 2px 0 0;
+            list-style: none;
+            font-size: 14px;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            background-clip: padding-box;
+            cursor: pointer;
+        }
+
+        .tt-suggestion {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: normal;
+            line-height: 1.428571429;
+            color: #333333;
+            white-space: nowrap;
+        }
+
+            .tt-suggestion:hover,
+            .tt-suggestion:focus {
+                color: #ffffff;
+                text-decoration: none;
+                outline: 0;
+                /*background-color: #428bca;*/
+            }
+
+        .label-info {
+            background: linear-gradient(to right, #8f94fb, #4e54c8);
+            width: 100%;
+        }
+
+        .tt-input {
+            height: 40px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body ng-app="DigitalArchivingApp" ng-controller="DamiCtrl">
+    <div>
+        <a class="btn btn-primary" ng-click="uploadInDb()">Click Here</a>
+        <table class="table table-responsive table-border" >
+            <thead>
+                <tr style="text-align:center">
+                <td>Images</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="m in path">
+                    <td style="word-break:break-all">
+                       
+                        <img ng-if="m.flag==4" ng-src="/Fetch/RenderImage?filepath={{m.FilePath}}" style="width: 47px; height: 50px; margin-left: 5px" />
+                        <div style="word-break:break-all" ng-if="m.flag==1">
+                            <img src="~/Contents/Images/xl.png" style="width: 47px; height: 50px; margin-left: 5px" /><br />
+                            {{m.FileName}}
+                        </div>  
+                        <div style="word-break:break-all" ng-if="m.flag==2">
+                            <img src="~/Contents/Images/pdf.jpg" style="width: 47px; height: 50px; margin-left: 5px" /><br />
+                            {{m.FileName}}
+                        </div>  
+                        <div  ng-if="m.flag==3">
+                            <img src="~/Contents/Images/word.jpg" style="width: 47px; height: 50px; margin-left: 5px" /><br />
+                           {{m.FileName}}
+                        </div>  
+                    
+                    </td>
+
+                    <td>
+                        <div class="col-md-7">
+                            <tags-input ng-model="m.tags">
+
+                            </tags-input>
+                        </div>
+
+                        <textarea placeholder="Insert DescriptionHere" ng-model="m.Description"></textarea>
+                        @*<div class=" col-md-7 " >
+
+                            <label>File Tags:</label>
+
+
+
+                            <input id="tag_{{$index}}" ng-model="tags" class="form-control" type="text" value="" placeholder="Enter File Tags" />
+
+
+                        </div>*@
+                        
+                    </td>
+                   
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" class="btn btn-default" value="Save" style="float:right" ng-click="PassAllInfo()" /> </td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+       
+    </div>
+ 
+
+   
+</body>
+</html>
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/app.js"></script>
+<script src="~/Scripts/damiJs.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.2.0/ng-tags-input.min.js"></script>
